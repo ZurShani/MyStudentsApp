@@ -1,5 +1,7 @@
 package com.example.mystudentsapp
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,7 +9,9 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
+
 class StudentsAdapter(
+    private val context: Context,
     private val students: List<Student>,
     private val onRowClick: (Student) -> Unit
 ) : RecyclerView.Adapter<StudentsAdapter.StudentViewHolder>() {
@@ -37,9 +41,13 @@ class StudentsAdapter(
 
         // Handle item click
         holder.itemView.setOnClickListener {
-            onRowClick(student)
+            val intent = Intent(context, StudentDetailsActivity::class.java).apply {
+                putExtra("student_name", student.name)
+                putExtra("student_id", student.id)
+            }
+            context.startActivity(intent)
         }
     }
 
-    override fun getItemCount(): Int = students.size
+        override fun getItemCount(): Int = students.size
 }

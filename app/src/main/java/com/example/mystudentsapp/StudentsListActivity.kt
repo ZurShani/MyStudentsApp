@@ -22,7 +22,7 @@ class StudentsListActivity : AppCompatActivity() {
         // Use a shared repository for data
         val students = StudentsRepository.studentsList
 
-        val adapter = StudentsAdapter(students) { student ->
+        val adapter = StudentsAdapter(this,students) { student ->
             // Handle row click: Navigate to details screen (to be implemented later)
         }
         recyclerView.adapter = adapter

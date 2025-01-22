@@ -1,5 +1,6 @@
 package com.example.mystudentsapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -21,9 +22,13 @@ class StudentDetailsActivity : AppCompatActivity() {
         textViewName.text = studentName
         textViewID.text = studentID
 
-        // Handle Edit Button Click
         findViewById<Button>(R.id.buttonEditStudent).setOnClickListener {
-            // Navigate to Edit Student Screen (to be implemented next)
+            val intent = Intent(this, EditStudentActivity::class.java).apply {
+                putExtra("student_name", studentName)
+                putExtra("student_id", studentID)
+            }
+            startActivity(intent)
         }
+
     }
 }

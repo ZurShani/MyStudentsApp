@@ -30,10 +30,12 @@ class StudentsAdapter(
         holder.idTextView.text = student.id
         holder.checkBox.isChecked = student.isChecked
 
+        // Handle checkbox click
         holder.checkBox.setOnCheckedChangeListener { _, isChecked ->
             student.isChecked = isChecked
         }
 
+        // Handle item click
         holder.itemView.setOnClickListener {
             onRowClick(student)
         }

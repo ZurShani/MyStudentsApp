@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -20,6 +21,7 @@ class StudentsAdapter(
         val nameTextView: TextView = itemView.findViewById(R.id.textViewName)
         val idTextView: TextView = itemView.findViewById(R.id.textViewID)
         val checkBox: CheckBox = itemView.findViewById(R.id.checkBox)
+        val pictureImageView: ImageView = itemView.findViewById(R.id.imageViewStudentPic) // Bind ImageView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {
@@ -30,24 +32,17 @@ class StudentsAdapter(
 
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
         val student = students[position]
+
         holder.nameTextView.text = student.name
         holder.idTextView.text = student.id
         holder.checkBox.isChecked = student.isChecked
-
-        // Handle checkbox click
-        holder.checkBox.setOnCheckedChangeListener { _, isChecked ->
-            student.isChecked = isChecked
-        }
+        holder.pictureImageView.setImageResource(R.drawable.ic_student)
 
         // Handle item click
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, StudentDetailsActivity::class.java).apply {
-                putExtra("student_name", student.name)
-                putExtra("student_id", student.id)
-            }
-            context.startActivity(intent)
+            onRowClick(student) // Call the lambda function passed from the activity
         }
     }
 
-        override fun getItemCount(): Int = students.size
+    override fun getItemCount(): Int = students.size
 }

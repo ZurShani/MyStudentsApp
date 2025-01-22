@@ -6,24 +6,25 @@
     android:padding="16dp"
     android:fitsSystemWindows="true">
 
-    <!-- Student Picture -->
+    <!-- Generic Student Picture -->
     <ImageView
-        android:id="@+id/imageViewStudentPic"
+        android:id="@+id/imageViewStudentPicAdd"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:src="@android:drawable/ic_menu_camera" />
+        android:src="@drawable/ic_student"
+        android:contentDescription="Student Picture"
+        android:layout_marginBottom="16dp" />
 
-    <!-- Student Name -->
+    <!-- Student Name Input -->
     <EditText
         android:id="@+id/editTextStudentName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Student Name"
-        android:inputType="textPersonName"
-        android:layout_marginTop="16dp" />
+        android:inputType="textPersonName" />
 
-    <!-- Student ID -->
+    <!-- Student ID Input -->
     <EditText
         android:id="@+id/editTextStudentID"
         android:layout_width="match_parent"
@@ -32,6 +33,7 @@
         android:inputType="number"
         android:layout_marginTop="8dp" />
 
+    <!-- CheckBox -->
     <CheckBox
         android:id="@+id/checkBoxAdd"
         android:layout_width="wrap_content"
@@ -46,6 +48,4 @@
         android:layout_height="wrap_content"
         android:text="Save Student"
         android:layout_marginTop="16dp" />
-
-
 </LinearLayout>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -7,12 +6,22 @@
     android:padding="16dp"
     android:fitsSystemWindows="true">
 
+    <!-- Generic Student Picture -->
+    <ImageView
+        android:id="@+id/imageViewStudentPicEdit"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_student"
+        android:contentDescription="Student Picture"
+        android:layout_marginBottom="16dp" />
+
     <!-- Student Name Input -->
     <EditText
         android:id="@+id/editTextStudentName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Edit Name"
+        android:hint="Edit Student Name"
         android:inputType="textPersonName" />
 
     <!-- Student ID Input -->
@@ -20,10 +29,11 @@
         android:id="@+id/editTextStudentID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Edit ID"
+        android:hint="Edit Student ID"
         android:inputType="number"
         android:layout_marginTop="8dp" />
 
+    <!-- CheckBox -->
     <CheckBox
         android:id="@+id/checkBoxEdit"
         android:layout_width="wrap_content"
@@ -31,14 +41,13 @@
         android:text="Checked"
         android:layout_marginTop="16dp" />
 
-    <!-- Save Button -->
+    <!-- Save Changes Button -->
     <Button
         android:id="@+id/buttonSaveChanges"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save Changes"
         android:layout_marginTop="16dp" />
-
 
     <!-- Delete Button -->
     <Button
@@ -49,6 +58,4 @@
         android:layout_marginTop="8dp"
         android:backgroundTint="#FF0000"
         android:textColor="#FFFFFF" />
-
-
 </LinearLayout>

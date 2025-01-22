@@ -6,9 +6,11 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.CheckBox
+import android.widget.ImageView
 
 
 class StudentDetailsActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_details)
@@ -17,13 +19,18 @@ class StudentDetailsActivity : AppCompatActivity() {
         val studentID = intent.getStringExtra("student_id")
         val student = StudentsRepository.studentsList.find { it.id == studentID }
 
+        val imageViewStudentPic: ImageView = findViewById(R.id.imageViewStudentPic)
         val textViewName: TextView = findViewById(R.id.textViewStudentName)
         val textViewID: TextView = findViewById(R.id.textViewStudentID)
         val checkBoxDetails: CheckBox = findViewById(R.id.checkBoxDetails)
 
+        // Set the student details
         textViewName.text = student?.name
         textViewID.text = student?.id
         checkBoxDetails.isChecked = student?.isChecked == true
+
+        // Set the generic student picture
+        imageViewStudentPic.setImageResource(R.drawable.ic_student)
 
         findViewById<Button>(R.id.buttonEditStudent).setOnClickListener {
             val intent = Intent(this, EditStudentActivity::class.java).apply {

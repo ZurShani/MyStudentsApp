@@ -22,10 +22,15 @@ class StudentsListActivity : AppCompatActivity() {
         // Use a shared repository for data
         val students = StudentsRepository.studentsList
 
-        val adapter = StudentsAdapter(this,students) { student ->
-            // Handle row click: Navigate to details screen (to be implemented later)
+        val adapter = StudentsAdapter(this, students) { student ->
+            val intent = Intent(this, StudentDetailsActivity::class.java).apply {
+                putExtra("student_name", student.name)
+                putExtra("student_id", student.id)
+            }
+            startActivity(intent)
         }
         recyclerView.adapter = adapter
+
 
         // FAB to add a new student
         val fabAddStudent: FloatingActionButton = findViewById(R.id.fabAddStudent)

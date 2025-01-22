@@ -5,6 +5,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.CheckBox
+
 
 class AddStudentActivity : AppCompatActivity() {
 
@@ -14,17 +16,19 @@ class AddStudentActivity : AppCompatActivity() {
 
         val editTextName: EditText = findViewById(R.id.editTextStudentName)
         val editTextID: EditText = findViewById(R.id.editTextStudentID)
+        val checkBoxAdd: CheckBox = findViewById(R.id.checkBoxAdd)
         val buttonSave: Button = findViewById(R.id.buttonSaveStudent)
 
         buttonSave.setOnClickListener {
             val name = editTextName.text.toString()
             val id = editTextID.text.toString()
+            val isChecked = checkBoxAdd.isChecked
 
             if (name.isBlank() || id.isBlank()) {
                 Toast.makeText(this, "Please enter all fields!", Toast.LENGTH_SHORT).show()
             } else {
                 // Add the student to the list
-                StudentsRepository.studentsList.add(Student(id, name))
+                StudentsRepository.studentsList.add(Student(id, name, isChecked))
                 Toast.makeText(this, "Student added successfully!", Toast.LENGTH_SHORT).show()
                 finish() // Close this activity and return to the list
             }

@@ -32,6 +32,13 @@
         android:inputType="number"
         android:layout_marginTop="8dp" />
 
+    <CheckBox
+        android:id="@+id/checkBoxAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Checked"
+        android:layout_marginTop="16dp" />
+
     <!-- Save Button -->
     <Button
         android:id="@+id/buttonSaveStudent"
@@ -39,4 +46,6 @@
         android:layout_height="wrap_content"
         android:text="Save Student"
         android:layout_marginTop="16dp" />
+
+
 </LinearLayout>

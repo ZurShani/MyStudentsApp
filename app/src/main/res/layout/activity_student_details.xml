@@ -34,6 +34,13 @@
         android:textSize="16sp"
         android:layout_marginTop="8dp" />
 
+    <CheckBox
+        android:id="@+id/checkBoxDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Checked"
+        android:layout_marginTop="16dp" />
+
     <!-- Edit Button -->
     <Button
         android:id="@+id/buttonEditStudent"
@@ -41,4 +48,6 @@
         android:layout_height="wrap_content"
         android:text="Edit Student"
         android:layout_marginTop="16dp" />
+
+
 </LinearLayout>

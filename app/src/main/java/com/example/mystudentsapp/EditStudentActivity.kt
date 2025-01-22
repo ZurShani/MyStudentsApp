@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.CheckBox
 
 class EditStudentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,26 +13,36 @@ class EditStudentActivity : AppCompatActivity() {
 
         val studentName = intent.getStringExtra("student_name")
         val studentID = intent.getStringExtra("student_id")
+        val student = StudentsRepository.studentsList.find { it.id == studentID }
 
         val editTextName: EditText = findViewById(R.id.editTextStudentName)
         val editTextID: EditText = findViewById(R.id.editTextStudentID)
+        val checkBoxEdit: CheckBox = findViewById(R.id.checkBoxEdit)
+        val buttonSaveChanges: Button = findViewById(R.id.buttonSaveChanges)
+        val buttonDeleteStudent: Button = findViewById(R.id.buttonDeleteStudent)
 
-        editTextName.setText(studentName)
-        editTextID.setText(studentID)
+        // Populate fields
+        editTextName.setText(student?.name)
+        editTextID.setText(student?.id)
+        checkBoxEdit.isChecked = student?.isChecked == true
 
-        findViewById<Button>(R.id.buttonSaveChanges).setOnClickListener {
+        // Handle Save Changes
+        buttonSaveChanges.setOnClickListener {
             val newName = editTextName.text.toString()
             val newID = editTextID.text.toString()
+            val newChecked = checkBoxEdit.isChecked
 
-            // Update student details in repository
-            StudentsRepository.studentsList.find { it.id == studentID }?.apply {
+            student?.apply {
                 name = newName
                 id = newID
+                isChecked = newChecked
             }
+
             finish() // Return to previous screen
         }
 
-        findViewById<Button>(R.id.buttonDeleteStudent).setOnClickListener {
+        // Handle Delete Student
+        buttonDeleteStudent.setOnClickListener {
             StudentsRepository.studentsList.removeAll { it.id == studentID }
             finish() // Return to previous screen
         }
